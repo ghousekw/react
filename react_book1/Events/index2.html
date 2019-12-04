@@ -27,37 +27,71 @@
             return <div style={textStyle}>{this.props.display}</div>
         }
     });
+    var Something = React.createClass({
+        handleMyEvent:function(){
+            // do something
+        },
+        componentDidMount: function() {
+            window.addEventListener("someEvent",this.handleMyEvent);
+        },
+        componentWillUnmount: function() {
+            window.removeEventListener("someEvent",this.handleMyEvent);
+        },
+        render:function(){
+            return (
+                <div>Hello!</div>
+            );
+        }
+    });
+    var PlusButton = React.createClass({
+        render: function() {
+            return (
+                <button onClick={this.props.clickHandler}>
+                +
+                </button>
+            );
+        }
+    });
     var CounterParent = React.createClass({
         getInitialState:function(){
             return{
                 count:0
             }
         },
-        increase:function(e){
-            this.setState({count:this.state.count+1});
+        increase: function(e) {
+            console.log(this);
+        var currentCount = this.state.count;
+            if (e.shiftKey) {
+                currentCount += 10;
+            } else {
+                currentCount += 1;
+            }
+            this.setState({
+                count: currentCount
+            });
         },
         render:function(){
             var bgStyle = {
-                backgroundColor:'#ff6666',
-                borderRadius:10,
-                padding:50,
-                width:250,
-                height:100,
-                textAlign:'center'
+                padding: 50,
+                backgroundColor: "#FFC53A",
+                width: 250,
+                height: 100,
+                borderRadius: 10,
+                textAlign: "center"
             };
             var btnStyle = {
-                fontSize:"1em",
-                width:30,
-                height:30,
-                fontFamily:'san-serif',
-                color:'#333',
-                fontWeight:'bold',
-                lineHeight:'3px'
+                fontSize: "1em",
+                width: 30,
+                height: 30,
+                fontFamily: "sans-serif",
+                color: "#333",
+                fontWeight: "bold",
+                lineHeight: "3px"
             };
             return (
                 <div style={bgStyle}>
                     <Counter display={this.state.count}/>
-                    <button onClick={this.increase} style={btnStyle}>+</button>
+                    <PlusButton clickHandler={this.increase}/>
                 </div>
             );
         }
