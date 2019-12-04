@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>More State!</title>
+<script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+var LightningCounter = React.createClass({
+    getInitialState:function(){
+        return{
+            strikes:0
+        }
+    },
+    timerTrack:function(){
+        this.setState({strikes:this.state.strikes+100});
+    },
+    componentDidMount:function(){
+        setInterval(this.timerTrack,1000);
+    },
+    render:function(){
+        var counterStyle = {
+            font:44,
+            color:'#66ffff'
+        }
+        var count = this.state.strikes.toLocaleString();
+        return <div style={counterStyle}>{count}</div>
+    }
+});
+var LightingCounterDisplay = React.createClass({
+    render:function(){
+        var commonStyle = {
+            margin:0,
+            padding:0
+        };
+        var divStyle={
+            width:200,
+            padding:40,
+            backgroundColor:'#000',
+            color:'#fff',
+            fontFamily:'monospace',
+            borderRadius:20,
+            textAlign:'center'
+        };
+        var textStyles = {
+        emphasis: {
+            fontSize: 30,
+            ...commonStyle
+        },
+        smallEmphasis: {
+            ...commonStyle
+        },
+        small: {
+            fontSize: 10,
+            opacity: 0.5,
+            ...commonStyle
+        }
+        }
+        return <div style={divStyle}>
+            <LightningCounter/>
+            <h2 style={textStyles.smallEmphasis}>LIGHTNING WORLD</h2>
+            <h2 style={textStyles.emphasis}>WORLDWIDE</h2>
+            <p style={textStyles.small}>(small example use this case)</p>
+            </div>
+    }
+});
+var destination = document.querySelector("#container");
+ReactDOM.render(
+    <LightingCounterDisplay/>,
+    destination
+);
+</script>
+</body>
+</html>
