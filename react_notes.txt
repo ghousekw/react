@@ -1,0 +1,15 @@
+npm install -g <package>
+    The -g flag tells npm to install the package globally. Local packages are used in your application.
+    For instance, React as a library will be a local package which can be required in your application for
+    usage. 
+
+You can install it via the terminal by typing:
+npm install <package>
+npm install react
+
+The installed package will automatically appear in a folder called node_modules/ and will be listed
+in the package.json file next to your other dependencies.
+
+To initialize the node_modules/ folder and the package.json file for your project.There is a npm command to initialize a npm project and thus a package.json file. Only when
+you have that file, you can install new local packages via npm.
+
