@@ -85,3 +85,8 @@ npm test
 // Builds the application for production
 npm run build
 ```
+
+```
+yarn init --yes
+yarn add global create-react-app
+yarn create-react-app my-app
