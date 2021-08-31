@@ -1,0 +1,11 @@
+.txta{
+    color: lime;
+}
+.txtb{
+    color: coral;
+}
+.txtc{
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-kerning: auto;
+    font-size: 100px;
+}
