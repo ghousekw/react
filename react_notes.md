@@ -1,5 +1,12 @@
 ```
+git clone https://github.com/codedthemes/mantis-free-react-admin-template.git
 npm install -g <package>
+npm install -g yarn
+yarn
+yarn start
+ctrl+c
+npx update-browserslist-db@latest
+
 ```
 
 > The -g flag tells npm to install the package globally. Local packages are used in your application.For instance, React as a library will be a local package which can be required in your application for usage.
